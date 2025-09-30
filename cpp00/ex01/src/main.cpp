@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:09:53 by erico-ke          #+#    #+#             */
-/*   Updated: 2025/09/30 13:41:52 by erico-ke         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:18:38 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void){
 	while (1){
 		std::cout << "Insert 'ADD', 'SEARCH' or 'EXIT'" << std::endl;
 		getline(std::cin, input);
-		if (phbk.check_input(input) == 3)
+		if (phbk.check_input(input, phbk) == 3)
 			break ;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:46:00 by erico-ke          #+#    #+#             */
-/*   Updated: 2025/09/30 13:08:24 by erico-ke         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:21:05 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ class Phonebook {
 		Contact contacts[8];
 	public:
 		Phonebook();
-		int	check_input(std::string input);
+		int		check_input(std::string input, Phonebook phbk);
+		void	display_contact(Phonebook phbk);
+		void	add_contact(Phonebook phbk);
 		~Phonebook();
 };
 

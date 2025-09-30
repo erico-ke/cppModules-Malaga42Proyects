@@ -6,21 +6,21 @@
 /*   By: erico-ke <erico-ke@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:45:22 by erico-ke          #+#    #+#             */
-/*   Updated: 2025/09/30 13:44:35 by erico-ke         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:24:14 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Phonebook.hpp"
 
-static void	add_contact(){
+void	Phonebook::add_contact(Phonebook phbk){
 	
 }
 
-static void	display_contact(){
+void	Phonebook::display_contact(Phonebook phbk){
 	
 }
 
-int Phonebook::check_input(std::string input){
+int Phonebook::check_input(std::string input, Phonebook phbk){
 	if (input == "EXIT")
 		return (3);
 	else if (input == "ADD")
