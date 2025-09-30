@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erico-ke <erico-ke@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 10:45:22 by erico-ke          #+#    #+#             */
-/*   Updated: 2025/09/30 13:44:35 by erico-ke         ###   ########.fr       */
+/*   Created: 2025/09/30 13:09:53 by erico-ke          #+#    #+#             */
+/*   Updated: 2025/09/30 13:41:52 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Phonebook.hpp"
 
-static void	add_contact(){
-	
-}
-
-static void	display_contact(){
-	
-}
-
-int Phonebook::check_input(std::string input){
-	if (input == "EXIT")
-		return (3);
-	else if (input == "ADD")
-		add_contact();
-	else if (input == "SEARCH")
-		display_contact();
-	else
-		std::cout << "Invalid input." << std::endl;
+int	main(void){
+	Phonebook phbk;
+	std::string input;
+	while (1){
+		std::cout << "Insert 'ADD', 'SEARCH' or 'EXIT'" << std::endl;
+		getline(std::cin, input);
+		if (phbk.check_input(input) == 3)
+			break ;
+	}
 	return (0);
 }
-
-Phonebook::Phonebook(){};
-
-Phonebook::~Phonebook(){};
