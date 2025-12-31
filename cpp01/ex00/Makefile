@@ -1,7 +1,7 @@
-NAME = 
+NAME = Braiiiiinnnzzz
 C = c++ -Wall -Wextra -Werror -std=c++98
 
-SRC = 
+SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 
 RM			=	rm -f
 
