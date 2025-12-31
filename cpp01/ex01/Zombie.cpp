@@ -22,3 +22,8 @@ void    Zombie::announce(void)
     return ;
 }
 
+void    Zombie::setname(std::string name)
+{
+    this->name = name;
+    return ;
+}
