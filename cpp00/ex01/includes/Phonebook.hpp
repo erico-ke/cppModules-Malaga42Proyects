@@ -14,16 +14,22 @@
 # define PHONEBOOK_HPP
 
 # include "Contact.hpp"
+# include <iomanip>
+# include <cstdlib>
 
 class Phonebook {
 	private:
 		Contact contacts[8];
+		int		contactCount;
+		int		oldestIndex;
 	public:
 		Phonebook();
-		int		check_input(std::string input, Phonebook phbk);
-		void	display_contact(Phonebook phbk);
-		void	add_contact(Phonebook phbk);
 		~Phonebook();
+		void	addContact();
+		void	searchContact();
+		void	displayAllContacts();
+		void	displayContactDetails(int index);
+		std::string	truncate(std::string str, size_t width);
 };
 
 #endif

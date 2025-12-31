@@ -6,20 +6,34 @@
 /*   By: erico-ke <erico-ke@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:09:53 by erico-ke          #+#    #+#             */
-/*   Updated: 2025/09/30 14:18:38 by erico-ke         ###   ########.fr       */
+/*   Updated: 2025/12/16 00:00:00 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Phonebook.hpp"
 
-int	main(void){
-	Phonebook phbk;
+int	main(void) {
+	Phonebook phonebook;
 	std::string input;
-	while (1){
-		std::cout << "Insert 'ADD', 'SEARCH' or 'EXIT'" << std::endl;
-		getline(std::cin, input);
-		if (phbk.check_input(input, phbk) == 3)
-			break ;
+
+	while (true) {
+		std::cout << "Enter a command (ADD, SEARCH, EXIT): ";
+		std::getline(std::cin, input);
+		
+		if (std::cin.eof()) {
+			std::cout << std::endl;
+			break;
+		}
+
+		if (input == "ADD") {
+			phonebook.addContact();
+		} else if (input == "SEARCH") {
+			phonebook.searchContact();
+		} else if (input == "EXIT") {
+			break;
+		} else {
+			std::cout << "Invalid command. Please use ADD, SEARCH, or EXIT." << std::endl;
+		}
 	}
 	return (0);
 }
