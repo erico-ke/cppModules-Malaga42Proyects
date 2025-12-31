@@ -35,5 +35,6 @@ int	main(void) {
 			std::cout << "Invalid command. Please use ADD, SEARCH, or EXIT." << std::endl;
 		}
 	}
+	phonebook.~Phonebook();
 	return (0);
 }

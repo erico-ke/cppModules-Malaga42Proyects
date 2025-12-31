@@ -57,6 +57,13 @@ void	Phonebook::addContact() {
 		std::cout << "Phone number cannot be empty!" << std::endl;
 		return;
 	}
+	// Validar que solo contenga dígitos
+	for (size_t i = 0; i < input.length(); i++) {
+		if (!std::isdigit(input[i])) {
+			std::cout << "Phone number must contain only digits!" << std::endl;
+			return;
+		}
+	}
 	newContact.setPhoneNumber(input);
 
 	std::cout << "Enter darkest secret: ";
