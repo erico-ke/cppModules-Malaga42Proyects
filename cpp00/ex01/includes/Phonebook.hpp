@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erico-ke <erico-ke@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:46:00 by erico-ke          #+#    #+#             */
-/*   Updated: 2025/09/30 14:21:05 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/01/02 17:08:43 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ class Phonebook {
 		void	displayAllContacts();
 		void	displayContactDetails(int index);
 		std::string	truncate(std::string str, size_t width);
+		size_t	getDisplayWidth(const std::string& str);
+		std::string	formatField(const std::string& str, size_t width);
+		bool	isOnlyWhitespace(const std::string& str);
+		std::string	trim(const std::string& str);
 };
 
 #endif

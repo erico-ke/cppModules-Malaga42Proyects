@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erico-ke <erico-ke@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:09:53 by erico-ke          #+#    #+#             */
-/*   Updated: 2025/12/16 00:00:00 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/01/02 17:08:43 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ int	main(void) {
 			std::cout << "Invalid command. Please use ADD, SEARCH, or EXIT." << std::endl;
 		}
 	}
-	phonebook.~Phonebook();
 	return (0);
 }

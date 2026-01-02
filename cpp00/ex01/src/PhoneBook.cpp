@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erico-ke <erico-ke@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:45:22 by erico-ke          #+#    #+#             */
-/*   Updated: 2025/12/16 00:00:00 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/01/02 17:09:09 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,77 @@ Phonebook::Phonebook() : contactCount(0), oldestIndex(0) {}
 
 Phonebook::~Phonebook() {}
 
+size_t	Phonebook::getDisplayWidth(const std::string& str) {
+	size_t width = 0;
+	size_t i = 0;
+	while (i < str.length()) {
+		unsigned char c = str[i];
+		if (c < 0x80) {
+			width++;
+			i++;
+		} else if ((c & 0xE0) == 0xC0) {
+			width++;
+			i += 2;
+		} else if ((c & 0xF0) == 0xE0) {
+			width++;
+			i += 3;
+		} else if ((c & 0xF8) == 0xF0) {
+			width++;
+			i += 4;
+		} else {
+			width++;
+			i++;
+		}
+	}
+	return width;
+}
+
 std::string	Phonebook::truncate(std::string str, size_t width) {
-	if (str.length() > width) {
-		return str.substr(0, width - 1) + ".";
+	if (getDisplayWidth(str) > width) {
+		size_t displayWidth = 0;
+		size_t bytePos = 0;
+		while (bytePos < str.length() && displayWidth < width - 1) {
+			unsigned char c = str[bytePos];
+			if (c < 0x80) {
+				bytePos++;
+			} else if ((c & 0xE0) == 0xC0) {
+				bytePos += 2;
+			} else if ((c & 0xF0) == 0xE0) {
+				bytePos += 3;
+			} else if ((c & 0xF8) == 0xF0) {
+				bytePos += 4;
+			} else {
+				bytePos++;
+			}
+			displayWidth++;
+		}
+		return str.substr(0, bytePos) + ".";
 	}
 	return str;
+}
+
+bool	Phonebook::isOnlyWhitespace(const std::string& str) {
+	for (size_t i = 0; i < str.length(); i++) {
+		if (!std::isspace(str[i])) {
+			return false;
+		}
+	}
+	return true;
+}
+
+std::string	Phonebook::trim(const std::string& str) {
+	size_t start = 0;
+	size_t end = str.length();
+	
+	while (start < end && std::isspace(str[start])) {
+		start++;
+	}
+	
+	while (end > start && std::isspace(str[end - 1])) {
+		end--;
+	}
+	
+	return str.substr(start, end - start);
 }
 
 void	Phonebook::addContact() {
@@ -29,7 +95,8 @@ void	Phonebook::addContact() {
 
 	std::cout << "Enter first name: ";
 	std::getline(std::cin, input);
-	if (input.empty() || std::cin.eof()) {
+	input = trim(input);
+	if (input.empty() || std::cin.eof() || isOnlyWhitespace(input)) {
 		std::cout << "First name cannot be empty!" << std::endl;
 		return;
 	}
@@ -37,7 +104,8 @@ void	Phonebook::addContact() {
 
 	std::cout << "Enter last name: ";
 	std::getline(std::cin, input);
-	if (input.empty() || std::cin.eof()) {
+	input = trim(input);
+	if (input.empty() || std::cin.eof() || isOnlyWhitespace(input)) {
 		std::cout << "Last name cannot be empty!" << std::endl;
 		return;
 	}
@@ -45,7 +113,8 @@ void	Phonebook::addContact() {
 
 	std::cout << "Enter nickname: ";
 	std::getline(std::cin, input);
-	if (input.empty() || std::cin.eof()) {
+	input = trim(input);
+	if (input.empty() || std::cin.eof() || isOnlyWhitespace(input)) {
 		std::cout << "Nickname cannot be empty!" << std::endl;
 		return;
 	}
@@ -53,11 +122,11 @@ void	Phonebook::addContact() {
 
 	std::cout << "Enter phone number: ";
 	std::getline(std::cin, input);
+	input = trim(input);
 	if (input.empty() || std::cin.eof()) {
 		std::cout << "Phone number cannot be empty!" << std::endl;
 		return;
 	}
-	// Validar que solo contenga dígitos
 	for (size_t i = 0; i < input.length(); i++) {
 		if (!std::isdigit(input[i])) {
 			std::cout << "Phone number must contain only digits!" << std::endl;
@@ -68,7 +137,8 @@ void	Phonebook::addContact() {
 
 	std::cout << "Enter darkest secret: ";
 	std::getline(std::cin, input);
-	if (input.empty() || std::cin.eof()) {
+	input = trim(input);
+	if (input.empty() || std::cin.eof() || isOnlyWhitespace(input)) {
 		std::cout << "Darkest secret cannot be empty!" << std::endl;
 		return;
 	}
@@ -85,19 +155,26 @@ void	Phonebook::addContact() {
 	std::cout << "Contact added successfully!" << std::endl;
 }
 
+std::string	Phonebook::formatField(const std::string& str, size_t width) {
+	std::string truncated = truncate(str, width);
+	size_t displayWidth = getDisplayWidth(truncated);
+	size_t padding = width > displayWidth ? width - displayWidth : 0;
+	return std::string(padding, ' ') + truncated;
+}
+
 void	Phonebook::displayAllContacts() {
 	std::cout << std::setw(10) << std::right << "Index" << "|";
 	std::cout << std::setw(10) << std::right << "First Name" << "|";
 	std::cout << std::setw(10) << std::right << "Last Name" << "|";
-	std::cout << std::setw(10) << std::right << "Nickname" << std::endl;
+	std::cout << std::setw(10) << std::right << "Nickname" << "|" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
 
 	for (int i = 0; i < contactCount; i++) {
 		if (!contacts[i].isEmpty()) {
 			std::cout << std::setw(10) << std::right << i << "|";
-			std::cout << std::setw(10) << std::right << truncate(contacts[i].getFirstName(), 10) << "|";
-			std::cout << std::setw(10) << std::right << truncate(contacts[i].getLastName(), 10) << "|";
-			std::cout << std::setw(10) << std::right << truncate(contacts[i].getNickname(), 10) << std::endl;
+			std::cout << formatField(contacts[i].getFirstName(), 10) << "|";
+			std::cout << formatField(contacts[i].getLastName(), 10) << "|";
+			std::cout << formatField(contacts[i].getNickname(), 10) << "|" << std::endl;
 		}
 	}
 }
@@ -128,7 +205,8 @@ void	Phonebook::searchContact() {
 	std::getline(std::cin, input);
 	
 	if (std::cin.eof()) {
-		return;
+		std::cout << std::endl;
+		exit(0);
 	}
 
 	
