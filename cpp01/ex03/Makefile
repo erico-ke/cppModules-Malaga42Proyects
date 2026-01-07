@@ -1,7 +1,7 @@
-NAME = 
+NAME = UnnecessaryViolence
 C = c++ -Wall -Wextra -Werror -std=c++98
 
-SRC = 
+SRC = ./src/main.cpp ./src/Weapon.cpp ./src/HumanA.cpp ./src/HumanB.cpp
 
 RM			=	rm -f
 
