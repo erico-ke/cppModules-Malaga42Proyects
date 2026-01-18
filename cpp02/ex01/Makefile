@@ -1,7 +1,7 @@
-NAME = 
+NAME = moreUsefulFixed
 C = c++ -Wall -Wextra -Werror -std=c++98
 
-SRC = 
+SRC = ./src/main.cpp ./src/Fixed.cpp
 
 RM			=	rm -f
 
