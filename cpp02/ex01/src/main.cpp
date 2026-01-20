@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 17:45:42 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/01/20 08:59:53 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/01/20 13:33:45 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int main( void )
 	Fixed const b( 10 );
 	Fixed const c( 42.42f );
 	Fixed const d( b );
+
 	a = Fixed( 1234.4321f );
+
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
