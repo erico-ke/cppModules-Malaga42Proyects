@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 14:12:28 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/01/18 15:50:28 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/01/20 13:22:01 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 
 class Harl
 {
-private:
-	void	debug(void);
-	void	info(void);
-	void	warning(void);
-	void	error(void);
-public:
-	Harl(void);
-	~Harl(void);
-	void	complain(int level);
+	private:
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
+	public:
+		Harl(void);
+		~Harl(void);
+		void	complain(int level);
 };
 
 
