@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 17:45:40 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/01/18 18:28:09 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/01/20 09:04:55 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,15 @@ std::ostream	&operator<<(std::ostream &out, const Fixed &fixed)
 {
 	out << fixed.toFloat();
 	return out;
+}
+
+int	Fixed::getRawBits(void) const
+{
+	std::cout << "getRawBits member function called" << std::endl;
+	return _fixedPointNumber;
+}
+
+void	Fixed::setRawBits(int const raw)
+{
+	_fixedPointNumber = raw;
 }

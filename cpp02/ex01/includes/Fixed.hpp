@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 17:45:35 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/01/18 18:27:21 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/01/20 09:04:35 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ public:
 	Fixed &operator=(const Fixed &other);
 	~Fixed(void);
 
+	int		getRawBits(void) const;
+	void	setRawBits(int const raw);
 	float	toFloat(void) const;
 	int		toInt(void) const;
 };
