@@ -1,7 +1,7 @@
 NAME = clapTrap
 C = c++ -Wall -Wextra -Werror -std=c++98
 
-SRC = 
+SRC = ./src/main.cpp ./src/ClapTrap.cpp
 
 RM			=	rm -f
 

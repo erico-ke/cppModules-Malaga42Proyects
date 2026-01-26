@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 14:36:40 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/01/20 14:50:02 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:34:26 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,21 @@
 # include <fstream>
 # include <cmath>
 
+// Color codes
+# define RESET "\033[0m"
+# define CONSTRUCTOR_COLOR "\033[36m"
+# define DESTRUCTOR_COLOR "\033[35m"
+# define ATTACK_COLOR "\033[33m"
+# define DAMAGE_COLOR "\033[31m"
+# define HEAL_COLOR "\033[32m"
+
 class ClapTrap
 {
 private:
-	std::string	_name;
-	int			_hitPoints = 10;
-	int			_energyPoints = 10;
-	int			_attackDamage = 0;
+	std::string			_name;
+	unsigned int		_hitPoints;
+	unsigned int		_energyPoints;
+	unsigned int		_attackDamage;
 public:
 	ClapTrap(void);
 	ClapTrap(std::string name);
@@ -34,6 +42,8 @@ public:
 	void	attack(const std::string &target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
+	
+	std::string	getName(void);
 };
 
 #endif
