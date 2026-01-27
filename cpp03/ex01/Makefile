@@ -1,7 +1,7 @@
-NAME = 
+NAME = ScavTrap
 C = c++ -Wall -Wextra -Werror -std=c++98
 
-SRC = 
+SRC = ./src/main.cpp ./src/ClapTrap.cpp ./src/ScavTrap.cpp
 
 RM			=	rm -f
 
