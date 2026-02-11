@@ -29,10 +29,64 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap()
 	std::cout << CONSTRUCTOR_COLOR << "ScavTrap constructor called. Generating " << _name << RESET << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other)
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
 	std::cout << CONSTRUCTOR_COLOR << "ScavTrap copy constructor called on " << other._name << RESET << std::endl;
 	*this = other;
 }
 
+ScavTrap::~ScavTrap(void)
+{
+	std::cout << DESTRUCTOR_COLOR << "ScavTrap destructor called" << RESET << std::endl;
+}
 
+ScavTrap	&ScavTrap::operator=(const ScavTrap &other)
+{
+	std::cout << CONSTRUCTOR_COLOR << "ScavTrap copy assignment operator called" << RESET << std::endl;
+	if (this != &other)
+	{
+		ClapTrap::operator=(other);
+	}
+	return *this;
+}
+
+void	ScavTrap::attack(const std::string &target)
+{
+	if (_hitPoints <= 0)
+	{
+		std::cout << DAMAGE_COLOR << "ScavTrap " << _name << " can not attack, no hit points left." << RESET << std::endl;
+		return ;
+	}
+	if (_energyPoints <= 0)
+	{
+		std::cout << DAMAGE_COLOR << "ScavTrap " << _name << " can not attack, no energy points left." << RESET << std::endl;
+		return ;
+	}
+	std::cout << ATTACK_COLOR << "ScavTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage." << RESET << std::endl;
+	_energyPoints -= 1;
+}
+
+void	ScavTrap::guardGate(void)
+{
+	std::cout << HEAL_COLOR << "ScavTrap " << _name << " is now in Gate keeper mode." << RESET << std::endl;
+}
+
+int	ScavTrap::getHitPoints(void)
+{
+	return _hitPoints;
+}
+
+int	ScavTrap::getEnergyPoints(void)
+{
+	return _energyPoints;
+}
+
+int	ScavTrap::getAttackDamage(void)
+{
+	return _attackDamage;
+}
+
+std::string	ScavTrap::getName(void)
+{
+	return _name;
+}

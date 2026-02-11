@@ -11,21 +11,12 @@
 /* ************************************************************************** */
 
 #include "../includes/ClapTrap.hpp"
+#include "../includes/ScavTrap.hpp"
 
 int	main(void)
 {
-	ClapTrap one = ClapTrap("Finn");
-	ClapTrap two = ClapTrap();
-	one.attack(two.getName());
-	two.takeDamage(10);
-	two.beRepaired(5);
-	two.attack(one.getName());
-	two = one;
-	two.takeDamage(5);
-	two.beRepaired(5);
-	ClapTrap four(one);
-	int i = -1;
-	while (++i < 10)
-		four.attack(one.getName());
-	return 0;
+	{
+		ScavTrap one = ScavTrap();
+		ScavTrap two = ScavTrap("Finneption");
+	}
 }
