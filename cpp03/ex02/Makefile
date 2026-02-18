@@ -1,7 +1,7 @@
 NAME = FragTrap
 C = c++ -Wall -Wextra -Werror -std=c++98
 
-SRC = ./src/main.cpp ./src/ClapTrap.cpp ./src/ScavTrap.cpp
+SRC = ./src/main.cpp ./src/ClapTrap.cpp ./src/ScavTrap.cpp ./src/FragTrap.cpp
 
 RM			=	rm -f
 
