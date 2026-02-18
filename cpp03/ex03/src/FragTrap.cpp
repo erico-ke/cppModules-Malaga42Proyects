@@ -101,7 +101,7 @@ void	FragTrap::highFivesGuys(void)
 		std::cout << DAMAGE_COLOR << "FragTrap " << _name << " can not give high fives, no hit points left." << RESET << std::endl;
 		return ;
 	}
-	std::cout << HIGHFIVE_COLOR << _name << ": Ey guys do you want a high five?\n\t" << WHAMM_COLOR << "*WHAMM*" << RESET << HIGHFIVE_COLOR << "\nHere you go." << RESET << std::endl;
+	std::cout << HIGHFIVE_COLOR << "FragTrap " << _name << ": Ey guys do you want a high five?\n\t" << WHAMM_COLOR << "*WHAMM*" << RESET << HIGHFIVE_COLOR << "\nHere you go." << RESET << std::endl;
 }
 
 int	FragTrap::getHitPoints(void)

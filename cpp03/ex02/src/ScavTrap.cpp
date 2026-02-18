@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:17:03 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/17 16:35:14 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/18 18:26:03 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,11 @@ void	ScavTrap::beRepaired(unsigned int amount)
 
 void	ScavTrap::guardGate(void)
 {
+	if (_hitPoints <= 0)
+	{
+		std::cout << DAMAGE_COLOR << "ScavTrap " << _name << " can not enter Gate keeper mode, no hit points left." << RESET << std::endl;
+		return ;
+	}
 	std::cout << HEAL_COLOR << "ScavTrap " << _name << " is now in Gate keeper mode." << RESET << std::endl;
 }
 
