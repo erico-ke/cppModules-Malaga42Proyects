@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:17:03 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/18 18:26:03 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/19 14:28:17 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,35 +66,6 @@ void	ScavTrap::attack(const std::string &target)
 	_energyPoints -= 1;
 }
 
-void	ScavTrap::takeDamage(unsigned int amount)
-{
-	if (_hitPoints <= 0)
-	{
-		std::cout << DAMAGE_COLOR << "ScavTrap " << _name << " can not be damaged, no hit points left." << RESET << std::endl;
-		return ;
-	}
-	_hitPoints -= amount;
-	std::cout << DAMAGE_COLOR << "ScavTrap " << _name << " takes " << amount << " points of damage, it has " << _hitPoints << " hit points left." << RESET << std::endl;
-}
-
-void	ScavTrap::beRepaired(unsigned int amount)
-{
-	if (_hitPoints <= 0)
-	{
-		std::cout << DAMAGE_COLOR << "ScavTrap " << _name << " can not repair itself, no hit points left." << RESET << std::endl;
-		return ;
-	}
-	if (_energyPoints <= 0)
-	{
-		std::cout << DAMAGE_COLOR << "ScavTrap " << _name << " can not repair itself, no energy points left." << RESET << std::endl;
-		return ;
-	}
-	_hitPoints += amount;
-	_energyPoints -= 1;
-	std::cout << HEAL_COLOR << "ScavTrap " << _name << " heals itself by " << amount << " hit points." << RESET << std::endl;
-}
-
-
 void	ScavTrap::guardGate(void)
 {
 	if (_hitPoints <= 0)
@@ -103,24 +74,4 @@ void	ScavTrap::guardGate(void)
 		return ;
 	}
 	std::cout << HEAL_COLOR << "ScavTrap " << _name << " is now in Gate keeper mode." << RESET << std::endl;
-}
-
-int	ScavTrap::getHitPoints(void)
-{
-	return _hitPoints;
-}
-
-int	ScavTrap::getEnergyPoints(void)
-{
-	return _energyPoints;
-}
-
-int	ScavTrap::getAttackDamage(void)
-{
-	return _attackDamage;
-}
-
-std::string	ScavTrap::getName(void)
-{
-	return _name;
 }

@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 16:45:16 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/18 18:04:32 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/19 14:28:17 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,7 @@ public:
 	FragTrap	&operator=(const FragTrap &other);
 
 	void		attack(const std::string &target);
-	void		takeDamage(unsigned int amount);
-	void		beRepaired(unsigned int amount);
-
 	void		highFivesGuys(void);
-
-	int			getHitPoints(void);
-	int			getEnergyPoints(void);
-	int			getAttackDamage(void);
-	std::string	getName(void);
 };
 
 
