@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 18:09:49 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/19 13:56:11 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/19 15:43:36 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "./ScavTrap.hpp"
 # include "./FragTrap.hpp"
+
+# define WHOAMI_COLOR "\033[95m"
 
 class DiamondTrap : public ScavTrap, public FragTrap
 {

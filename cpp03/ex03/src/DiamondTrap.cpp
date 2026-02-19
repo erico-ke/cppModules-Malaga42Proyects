@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 18:10:20 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/19 14:20:15 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/19 15:56:14 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,21 @@
 
 DiamondTrap::DiamondTrap(void) : ClapTrap("Unnamed_clap_name"), ScavTrap(), FragTrap(), _name("Unnamed")
 {
+	ClapTrap::_name = "Unnamed_clap_name";
+	
 	_hitPoints = FragTrap::_hitPoints;
-	_energyPoints = ScavTrap::_energyPoints;
+	_energyPoints = 50;
 	_attackDamage = FragTrap::_attackDamage;
 
 	std::cout << CONSTRUCTOR_COLOR << "DiamondTrap default constructor called" << RESET << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"),  ScavTrap(name), FragTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"),  ScavTrap(name), FragTrap(name), _name(name)
 {
+	ClapTrap::_name = name + "_clap_name";
+	
 	_hitPoints = FragTrap::_hitPoints;
-	_energyPoints = ScavTrap::_energyPoints;
+	_energyPoints = 50;
 	_attackDamage = FragTrap::_attackDamage;
 
 	std::cout << CONSTRUCTOR_COLOR << "DiamondTrap constructor called. Generating " << _name << RESET << std::endl;
@@ -59,5 +63,5 @@ void	DiamondTrap::attack(const std::string &target)
 
 void	DiamondTrap::whoAmI(void)
 {
-	std::cout << HIGHFIVE_COLOR << "I am DiamondTrap " << _name << " and my ClapTrap name is " << ClapTrap::_name << RESET << std::endl;
+	std::cout << WHOAMI_COLOR << "I am DiamondTrap " << _name << " and my ClapTrap name is " << ClapTrap::_name << RESET << std::endl;
 }
