@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 18:15:00 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/20 15:13:24 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/20 15:28:09 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,17 @@ Brain	&Brain::operator=(const Brain &other)
 Brain::~Brain(void)
 {
 	std::cout << DESTRUCTOR_COLOR << "Brain destructor called" << RESET << std::endl;
+}
+
+std::string	Brain::getIdea(int index) const
+{
+	if (index >= 0 && index < 100)
+		return _ideas[index];
+	return "";
+}
+
+void	Brain::setIdea(int index, const std::string &idea)
+{
+	if (index >= 0 && index < 100)
+		_ideas[index] = idea;
 }

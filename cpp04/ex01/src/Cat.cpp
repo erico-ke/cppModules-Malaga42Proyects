@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:03:54 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/20 15:13:24 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/20 15:35:55 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,19 @@ Cat::~Cat(void)
 void	Cat::makeSound(void) const
 {
 	std::cout << SOUND_COLOR << "Meow!!" << RESET << std::endl;
+}
+
+std::string	Cat::getBrainIdea(int index) const
+{
+	return this->_brain->getIdea(index);
+}
+
+void	Cat::setBrainIdea(int index, const std::string &idea)
+{
+	this->_brain->setIdea(index, idea);
+}
+
+const Brain*	Cat::getBrainAddress(void) const
+{
+	return this->_brain;
 }

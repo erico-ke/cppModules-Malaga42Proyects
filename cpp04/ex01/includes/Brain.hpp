@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 18:14:55 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/20 14:23:07 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/20 15:28:09 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ public:
 	~Brain(void);
 	
 	std::string	getIdea(int index) const;
-	void		setIdea(const std::string &idea);
+	void		setIdea(int index, const std::string &idea);
 };
 
 #endif

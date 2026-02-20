@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 16:55:33 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/20 14:59:12 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/20 15:35:55 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ public:
 	~Dog(void);
 	
 	virtual void	makeSound(void) const;
+	std::string		getBrainIdea(int index) const;
+	void			setBrainIdea(int index, const std::string &idea);
+	const Brain*	getBrainAddress(void) const;
 };
 
 #endif

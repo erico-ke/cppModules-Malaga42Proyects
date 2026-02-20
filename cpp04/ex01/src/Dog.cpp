@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 16:56:53 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/20 15:13:24 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/20 15:35:55 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,19 @@ Dog::~Dog(void)
 void	Dog::makeSound(void) const
 {
 	std::cout << SOUND_COLOR << "Bark Bark" << RESET << std::endl;
+}
+
+std::string	Dog::getBrainIdea(int index) const
+{
+	return this->_brain->getIdea(index);
+}
+
+void	Dog::setBrainIdea(int index, const std::string &idea)
+{
+	this->_brain->setIdea(index, idea);
+}
+
+const Brain*	Dog::getBrainAddress(void) const
+{
+	return this->_brain;
 }
