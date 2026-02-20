@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:02:48 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/19 17:03:30 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/20 15:13:24 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 # include <iostream>
 # include "./Animal.hpp"
+# include "./Brain.hpp"
 
 class Cat : public Animal
 {
+private:
+	Brain *_brain;
 public:
 	Cat(void);
 	Cat(const Cat &other);

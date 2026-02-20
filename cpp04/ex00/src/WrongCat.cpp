@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:19:18 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/19 17:19:19 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/20 15:13:24 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ WrongCat::WrongCat(void) : WrongAnimal()
 	_type = "WrongCat";
 }
 
-WrongCat::WrongCat(const WrongCat &other)
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other)
 {
 	std::cout << CONSTRUCTOR_COLOR << "WrongCat copy constructor called" << RESET << std::endl;
-	if (this != &other)
-		*this = other;
 }
 
 WrongCat	&WrongCat::operator=(const WrongCat &other)
 {
-	std::cout << CONSTRUCTOR_COLOR << "WrongCat copy assigment constructor called" << RESET << std::endl;
+	std::cout << CONSTRUCTOR_COLOR << "WrongCat copy assignment operator called" << RESET << std::endl;
 	if (this != &other)
-		_type = other._type;
+	{
+		WrongAnimal::operator=(other);
+	}
 	return *this;
 }
 
 WrongCat::~WrongCat(void)
 {
-	std::cout << DESTRUCTOR_COLOR << "WrongCat constructor called" << RESET << std::endl;
+	std::cout << DESTRUCTOR_COLOR << "WrongCat destructor called" << RESET << std::endl;
 }
 
 void	WrongCat::makeSound(void) const

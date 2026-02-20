@@ -1,7 +1,7 @@
 NAME = useTheBrain
 C = c++ -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp ./src/Animal.cpp ./src/Cat.cpp ./src/Dog.cpp ./src/WrongAnimal.cpp ./src/WrongCat.cpp
+SRC = main.cpp ./src/Animal.cpp ./src/Cat.cpp ./src/Dog.cpp ./src/WrongAnimal.cpp ./src/WrongCat.cpp ./src/Brain.cpp
 
 RM			=	rm -f
 

@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 18:14:55 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/19 18:18:44 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/20 14:23:07 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 
 # include <iostream>
 
+# define RESET "\033[0m"
+# define CONSTRUCTOR_COLOR "\033[36m"
+# define DESTRUCTOR_COLOR "\033[35m"
+
 class Brain
 {
 private:
-	std::string	ideas[100];
+	std::string	_ideas[100];
 public:
 	Brain(void);
 	Brain(const Brain &other);

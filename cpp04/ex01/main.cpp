@@ -6,87 +6,111 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:22:23 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/19 17:49:19 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/20 15:18:40 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/Animal.hpp"
 #include "./includes/Cat.hpp"
 #include "./includes/Dog.hpp"
-#include "./includes/WrongAnimal.hpp"
-#include "./includes/WrongCat.hpp"
 
 int	main(void)
 {
-	std::cout << std::endl << "Creating Animal*, Dog* and Cat* as Animal pointers...\n" << std::endl;
+	std::cout << "\n=== Test 1: Basic test from subject ===\n" << std::endl;
 	{
-		const Animal* meta = new Animal();
 		const Animal* j = new Dog();
 		const Animal* i = new Cat();
 		
-		std::cout << "\n--- Getting types ---" << std::endl;
-		std::cout << "Dog type: " << j->getType() << std::endl;
-		std::cout << "Cat type: " << i->getType() << std::endl;
-		std::cout << "Animal type: " << meta->getType() << std::endl;
-		
-		std::cout << "\n--- Making sounds (polymorphism works!) ---" << std::endl;
-		std::cout << "Cat sound: ";
-		i->makeSound();
-		std::cout << "Dog sound: ";
-		j->makeSound();
-		std::cout << "Animal sound: ";
-		meta->makeSound();
-		
-		std::cout << "\n--- Deleting ---" << std::endl;
-		delete meta;
 		delete j;
 		delete i;
 	}
-	
-	std::cout << "\nDemonstrating why makeSound() should be virtual...\n" << std::endl;
+
+	std::cout << "\n=== Test 2: Array of Animals ===\n" << std::endl;
 	{
-		const WrongAnimal* wrongMeta = new WrongAnimal();
-		const WrongAnimal* wrongCat = new WrongCat();
+		const int size = 10;
+		Animal* animals[size];
 		
-		std::cout << "\n--- Getting types ---" << std::endl;
-		std::cout << "WrongCat type: " << wrongCat->getType() << std::endl;
-		std::cout << "WrongAnimal type: " << wrongMeta->getType() << std::endl;
+		std::cout << "Creating 10 animals (5 Dogs, 5 Cats):\n" << std::endl;
+		for (int i = 0; i < size / 2; i++)
+			animals[i] = new Dog();
 		
-		std::cout << "\n--- Making sounds ---" << std::endl;
-		std::cout << "WrongCat sound: ";
-		wrongCat->makeSound();
-		std::cout << "WrongAnimal sound: ";
-		wrongMeta->makeSound();
+		for (int i = size / 2; i < size; i++)
+			animals[i] = new Cat();
 		
-		std::cout << "\nWrongCat makes WrongAnimal sound because makeSound() is NOT virtual!" << std::endl;
-		
-		std::cout << "\n--- Deleting ---" << std::endl;
-		delete wrongMeta;
-		delete wrongCat;
+		std::cout << "\nDeleting all animals:\n" << std::endl;
+		for (int i = 0; i < size; i++)
+			delete animals[i];
 	}
-	
-	std::cout << "\nTesting copy and assignment constructors...\n" << std::endl;
+
+	std::cout << "\n=== Test 3: Deep copy - Dog ===\n" << std::endl;
 	{
-		std::cout << "--- Creating original dog ---" << std::endl;
-		Dog originalDog;
+		std::cout << "Creating original Dog:" << std::endl;
+		Dog original;
 		
-		std::cout << "\n--- Copy constructor ---" << std::endl;
-		Dog copiedDog(originalDog);
+		std::cout << "\nCreating copy with copy constructor:" << std::endl;
+		Dog copy(original);
 		
-		std::cout << "\n--- Assignment operator ---" << std::endl;
-		Dog assignedDog;
-		assignedDog = originalDog;
-		
-		std::cout << "\n--- Making sounds ---" << std::endl;
+		std::cout << "\nBoth dogs making sounds:" << std::endl;
 		std::cout << "Original: ";
-		originalDog.makeSound();
-		std::cout << "Copied: ";
-		copiedDog.makeSound();
-		std::cout << "Assigned: ";
-		assignedDog.makeSound();
+		original.makeSound();
+		std::cout << "Copy: ";
+		copy.makeSound();
 		
-		std::cout << "\n--- Destruction phase ---" << std::endl;
+		std::cout << "\nDestroying dogs:" << std::endl;
 	}
-	
+
+	std::cout << "\n=== Test 4: Deep copy - Cat ===\n" << std::endl;
+	{
+		std::cout << "Creating original Cat:" << std::endl;
+		Cat original;
+		
+		std::cout << "\nCreating copy with copy constructor:" << std::endl;
+		Cat copy(original);
+		
+		std::cout << "\nBoth cats making sounds:" << std::endl;
+		std::cout << "Original: ";
+		original.makeSound();
+		std::cout << "Copy: ";
+		copy.makeSound();
+		
+		std::cout << "\nDestroying cats:" << std::endl;
+	}
+
+	std::cout << "\n=== Test 5: Assignment operator ===\n" << std::endl;
+	{
+		std::cout << "Creating two Dogs:" << std::endl;
+		Dog dog1;
+		Dog dog2;
+		
+		std::cout << "\nAssigning dog1 to dog2:" << std::endl;
+		dog2 = dog1;
+		
+		std::cout << "\nBoth dogs making sounds:" << std::endl;
+		std::cout << "Dog1: ";
+		dog1.makeSound();
+		std::cout << "Dog2: ";
+		dog2.makeSound();
+		
+		std::cout << "\nDestroying dogs:" << std::endl;
+	}
+
+	std::cout << "\n=== Test 6: Deep copy with pointers ===\n" << std::endl;
+	{
+		std::cout << "Creating original Dog pointer:" << std::endl;
+		Dog* original = new Dog();
+		
+		std::cout << "\nCreating copy:" << std::endl;
+		Dog* copy = new Dog(*original);
+		
+		std::cout << "\nDeleting original (copy should remain valid):" << std::endl;
+		delete original;
+		
+		std::cout << "\nCopy still making sound: ";
+		copy->makeSound();
+		
+		std::cout << "\nDeleting copy:" << std::endl;
+		delete copy;
+	}
+
 	return 0;
 }
