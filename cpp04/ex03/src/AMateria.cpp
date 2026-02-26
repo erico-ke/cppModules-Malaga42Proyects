@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:25:11 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/23 17:45:38 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/26 15:31:38 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ std::string const	&AMateria::getType() const
 
 void	AMateria::use(ICharacter &target)
 {
-	std::cout << ERROR_COLOR << _type << ": missed the target" << RESET << std::endl;
+	std::cout << ERROR_COLOR << "Default materia can't interact with " << target.getName() << RESET << std::endl;
 }
