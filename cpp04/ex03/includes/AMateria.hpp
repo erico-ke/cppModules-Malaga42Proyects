@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:14:29 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/26 14:25:10 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/26 18:50:19 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define AMATERIA_HPP
 
 # include <iostream>
-# include "ICharacter.hpp"
+
+class ICharacter;
 
 # define RESET "\033[0m"
 # define CONSTRUCTOR_COLOR "\033[36m"

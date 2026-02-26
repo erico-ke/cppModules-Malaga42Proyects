@@ -1,7 +1,12 @@
 NAME = interCap
 C = c++ -Wall -Wextra -Werror -std=c++98
 
-SRC = 
+SRC = main.cpp \
+	  src/AMateria.cpp \
+	  src/Ice.cpp \
+	  src/Cure.cpp \
+	  src/Character.cpp \
+	  src/MateriaSource.cpp
 
 RM			=	rm -f
 

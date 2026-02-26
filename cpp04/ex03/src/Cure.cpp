@@ -6,11 +6,12 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:13:59 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/26 15:23:46 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/26 18:52:10 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Cure.hpp"
+#include "../includes/ICharacter.hpp"
 
 Cure::Cure(void) : AMateria("cure")
 {

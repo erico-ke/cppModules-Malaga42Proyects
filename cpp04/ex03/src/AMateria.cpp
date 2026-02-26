@@ -6,11 +6,12 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:25:11 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/26 15:31:38 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/26 18:50:31 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/AMateria.hpp"
+#include "../includes/ICharacter.hpp"
 
 AMateria::AMateria(void)
 {

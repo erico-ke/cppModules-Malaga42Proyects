@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:47:42 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/26 17:11:27 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/26 18:52:41 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,3 +82,51 @@ std::string const&	Character::getName() const
 	return (this->_name);
 }
 
+void	Character::equip(AMateria *m)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (_slot[i] == NULL)
+		{
+			_slot[i] = m;
+			std::cout << "Materia " << m->getType() << " equiped on slot " << i << std::endl;
+			return ;
+		}
+	}
+	std::cout << ERROR_COLOR << "Materia " << m->getType() << " could not be equipped," << _name << " inventory's is full." << RESET  << std::endl;
+}
+
+void	Character::unequip(int idx)
+{
+	if (idx <= 3 && idx >= 0 && _slot[idx] != NULL)
+	{
+		for (int i = 0; i < 500; i++)
+		{
+			if (_rest[i] == NULL)
+			{
+				_rest[i] = _slot[idx];
+				break;
+			}
+		}
+		std::cout << "Materia " << _slot[idx]->getType() << " unequiped successesfully from slot " << idx << std::endl;
+		_slot[idx] = NULL;
+		return ;
+	}
+	if (idx > 3 || idx < 0)
+		std::cout << ERROR_COLOR << "Slot " << idx << "isn't an inventory slot" << RESET << std::endl;
+	else
+		std::cout << ERROR_COLOR << "Slot " << idx << "doesn't have a materia" << RESET << std::endl;
+}
+
+void	Character::use(int idx, ICharacter &target)
+{
+	if (idx > 3 || idx < 0)
+	{
+		std::cout << ERROR_COLOR << "Slot " << idx << " doesn't exist" << RESET << std::endl;
+		return ;
+	}
+	if (_slot[idx] != NULL)
+		_slot[idx]->use(target);
+	else
+		std::cout << ERROR_COLOR << "There is no materia saved in slot " << idx << RESET << std::endl;
+}

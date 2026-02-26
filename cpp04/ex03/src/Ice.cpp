@@ -6,11 +6,12 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 14:23:31 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/02/26 15:11:57 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/02/26 18:52:10 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Ice.hpp"
+#include "../includes/ICharacter.hpp"
 
 Ice::Ice(void) : AMateria("ice")
 {
