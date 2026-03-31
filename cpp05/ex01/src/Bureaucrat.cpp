@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 12:48:15 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/03/31 17:12:03 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:10:07 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ Bureaucrat::~Bureaucrat(void)
 
 const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Grade too high.");
+	return ("Bureaucrat grade too high.");
 }
 
 const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Grade too low.");
+	return ("Bureaucrat grade too low.");
 }
 
 void	Bureaucrat::incrementGrade()

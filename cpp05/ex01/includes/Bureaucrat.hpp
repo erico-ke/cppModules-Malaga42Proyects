@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 12:08:35 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/03/31 17:02:51 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:14:03 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
+# include "Form.hpp"
 
 # ifndef DEBUG
 #  define DEBUG 0
@@ -28,6 +29,8 @@
 # define RESET "\033[0m"
 # define CONSTRUCTOR_COLOR "\033[36m"
 # define DESTRUCTOR_COLOR "\033[35m"
+
+class Form;
 
 class Bureaucrat
 {
@@ -58,6 +61,7 @@ public:
 		const char	*what() const throw();
 	};
 
+	void	signForm(Form &form);
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &src);
