@@ -4,7 +4,7 @@ CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 DEBUG			?=	0
 CPPFLAGS	=	-Iincludes -DDEBUG=$(DEBUG)
 
-SRC			=	./src/Bureucrat.cpp ./main.cpp
+SRC			=	./src/Bureaucrat.cpp ./main.cpp
 OBJS			=	$(SRC:.cpp=.o)
 
 RM			=	rm -f
