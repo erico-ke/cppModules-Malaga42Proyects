@@ -6,12 +6,12 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 12:48:15 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/04/01 10:51:32 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/04/01 12:38:46 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
+#include "../includes/AForm.hpp"
 
 Bureaucrat::Bureaucrat(void): _name("Unnamed"), _grade(150)
 {
@@ -82,7 +82,7 @@ int	Bureaucrat::getGrade() const
 	return (_grade);
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &form)
 {
 	try
 	{
@@ -94,6 +94,21 @@ void	Bureaucrat::signForm(Form &form)
 		std::cout << _name << " couldn't sign " << form.getName()
 			<< " because " << e.what() << std::endl;
 	}
+}
+
+void	Bureaucrat::executeForm(AForm const &form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+		return;
+	}
+	
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &src)

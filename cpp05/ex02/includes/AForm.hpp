@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/31 18:04:18 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/04/01 10:37:13 by erico-ke         ###   ########.fr       */
+/*   Created: 2026/04/01 12:10:00 by copilot           #+#    #+#             */
+/*   Updated: 2026/04/01 11:15:30 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <iostream>
 
@@ -41,39 +41,51 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 private:
 	const std::string	_name;
 	bool				_isSigned;
 	const int			_signGrade;
 	const int			_executeGrade;
-public:
-	Form(void);
-	Form(const std::string &name, int signGrade, int executeGrade);
-	Form(const Form &other);
-	Form &operator=(const Form &other);
-	~Form(void);
 
-	const std::string	&getName() const;
-	bool				getIsSigned() const;
-	int					getSignGrade() const;
-	int					getExecuteGrade() const;
-	
-	class	GradeTooHighException : public std::exception
-	{
-	public:
-		const char	*what() const throw();
-	};
-	class	GradeTooLowException : public std::exception
-	{
-	public:
-		const char	*what() const throw();
-	};
-	
+protected:
+	virtual void	executeAction(void) const = 0;
+
+public:
+	AForm(void);
+	AForm(const std::string &name, int signGrade, int executeGrade);
+	AForm(const AForm &other);
+	AForm &operator=(const AForm &other);
+	virtual ~AForm(void);
+
+	const std::string	&getName(void) const;
+	bool				getIsSigned(void) const;
+	int					getSignGrade(void) const;
+	int					getExecuteGrade(void) const;
+
 	void	beSigned(const Bureaucrat &other);
+	void	execute(Bureaucrat const &executor) const;
+
+	class GradeTooHighException : public std::exception
+	{
+	public:
+		const char	*what(void) const throw();
+	};
+
+	class GradeTooLowException : public std::exception
+	{
+	public:
+		const char	*what(void) const throw();
+	};
+
+	class FormNotSignedException : public std::exception
+	{
+	public:
+		const char	*what(void) const throw();
+	};
 };
 
-std::ostream &operator<<(std::ostream &out, const Form &src);
+std::ostream &operator<<(std::ostream &out, const AForm &src);
 
 #endif

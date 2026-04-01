@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 12:08:35 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/04/01 10:32:02 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/04/01 11:15:30 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define CONSTRUCTOR_COLOR "\033[36m"
 # define DESTRUCTOR_COLOR "\033[35m"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -60,7 +60,8 @@ public:
 		const char	*what() const throw();
 	};
 
-	void	signForm(Form &form);
+	void	signForm(AForm &form);
+	void	executeForm(AForm const &form) const;
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &src);
