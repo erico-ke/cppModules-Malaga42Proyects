@@ -26,6 +26,7 @@
 # endif
 
 # define RESET "\033[0m"
+# define GREEN "\033[32m"
 # define CONSTRUCTOR_COLOR "\033[36m"
 # define DESTRUCTOR_COLOR "\033[35m"
 

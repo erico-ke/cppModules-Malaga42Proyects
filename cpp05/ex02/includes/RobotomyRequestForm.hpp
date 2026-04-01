@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 12:10:00 by copilot           #+#    #+#             */
-/*   Updated: 2026/04/01 11:15:30 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/04/01 13:21:49 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 # include "AForm.hpp"
+# include <cstdlib>
+# include <ctime>
 
 class RobotomyRequestForm : public AForm
 {
