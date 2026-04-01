@@ -1,10 +1,10 @@
-NAME			=	VariousForms
+NAME			=	interExploit
 CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 DEBUG			?=	0
 CPPFLAGS	=	-Iincludes -DDEBUG=$(DEBUG)
 
-SRC			=	./src/Bureaucrat.cpp ./src/AForm.cpp ./main.cpp ./src/ShubberyCreationForm.cpp ./src/RobotomyRequestForm.cpp ./src/PresidentialPardonForm.cpp
+SRC			=	./src/Bureaucrat.cpp ./src/AForm.cpp ./main.cpp ./src/ShubberyCreationForm.cpp ./src/RobotomyRequestForm.cpp ./src/PresidentialPardonForm.cpp ./src/Intern.cpp
 OBJS			=	$(SRC:.cpp=.o)
 
 RM			=	rm -f
