@@ -1,10 +1,10 @@
-NAME			=
+NAME			= Span
 CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 DEBUG			?=	0
 CPPFLAGS	=	-Iincludes -DDEBUG=$(DEBUG)
 
-SRC			=	
+SRC			=	./main.cpp ./Span.cpp
 OBJS			=	$(SRC:.cpp=.o)
 
 RM			=	rm -f
