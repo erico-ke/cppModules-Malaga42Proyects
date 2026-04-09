@@ -1,32 +1,33 @@
-NAME			=
-CXX			=	c++
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
+NAME			=	easyfind
+
+CXX				=	c++
+CXXFLAGS		=	-Wall -Wextra -Werror -std=c++98
 DEBUG			?=	0
-CPPFLAGS	=	-Iincludes -DDEBUG=$(DEBUG)
+CPPFLAGS		=	-DDEBUG=$(DEBUG)
 
-SRC			=	
-OBJS			=	$(SRC:.cpp=.o)
+SRC				=	./main.c
+OBJS			=	$(SRC:.c=.o)
 
-RM			=	rm -f
+RM				=	rm -f
 
-all:	$(NAME)
+all:			$(NAME)
 
-debug:	DEBUG = 1
-debug:	re
+debug:			DEBUG = 1
+debug:			re
 
-$(NAME): $(OBJS)
+$(NAME):		$(OBJS)
 	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(NAME) compiled"
 
-%.o: %.cpp
+%.o:			%.c
 	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	@$(RM) $(OBJS)
 
-fclean:	clean
+fclean:			clean
 	@$(RM) $(NAME)
 
-re:	fclean all
+re:				fclean all
 
-.PHONY:	all debug clean fclean re
+.PHONY:			all debug clean fclean re
