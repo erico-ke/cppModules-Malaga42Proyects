@@ -1,27 +1,32 @@
-NAME = 
-C = c++ -Wall -Wextra -Werror -std=c++98
+NAME			=
+CXX			=	c++
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
+DEBUG			?=	0
+CPPFLAGS	=	-Iincludes -DDEBUG=$(DEBUG)
 
-SRC = 
+SRC			=	
+OBJS			=	$(SRC:.cpp=.o)
 
 RM			=	rm -f
 
-OBJS		=	$(SRC:.cpp=.o)
+all:	$(NAME)
+
+debug:	DEBUG = 1
+debug:	re
+
+$(NAME): $(OBJS)
+	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OBJS) -o $(NAME)
+	@echo "$(NAME) compiled"
 
 %.o: %.cpp
-	@$(C) $(FLAGS) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@
 
-all : $(NAME)
-
-$(NAME)	: $(OBJS)
-	@$(C) $^ -o $(NAME)
-	@echo '$(NAME) compiled!'
-
-fclean		: clean
-	@$(RM) $(NAME)
-
-clean		:
+clean:
 	@$(RM) $(OBJS)
 
-re			:	fclean all
+fclean:	clean
+	@$(RM) $(NAME)
 
-.PHONY		:	all clean fclean re
+re:	fclean all
+
+.PHONY:	all debug clean fclean re
