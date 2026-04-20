@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 16:25:09 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/04/20 18:58:31 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/04/20 19:41:28 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,8 +169,9 @@ void PmergeMe<Container>::_recursiveSort(Container &larger)
 	int oddElem = -1;
 
 	_pairingPhase(larger, newLarger, newSmaller, oddElem);
+	Container partners = newLarger;
 	_recursiveSort(newLarger);
-	_insertionPhase(newLarger, newSmaller, oddElem);
+	_insertionPhase(newLarger, newSmaller, partners, oddElem);
 
 	larger.clear();
 	for (size_t i = 0; i < newLarger.size(); ++i)
@@ -178,45 +179,50 @@ void PmergeMe<Container>::_recursiveSort(Container &larger)
 }
 
 template<typename Container>
-void PmergeMe<Container>::_insertionPhase(Container &sorted, const Container &smaller, int oddElement)
+void PmergeMe<Container>::_insertionPhase(Container &sorted, const Container &smaller, const Container &partners, int oddElement)
 {
-	std::vector<int>	jacobsthal = _generateJacobsthal(smaller.size());
+	size_t n = smaller.size();
+	std::vector<size_t> order;
 
-	std::vector<int>	gaps;
-	for (size_t i = 2; i < jacobsthal.size(); ++i)
+	if (n > 0)
+		order.push_back(0);
+
+	std::vector<int> jacobsthal = _generateJacobsthal(static_cast<int>(n));
+	size_t previous = 1;
+
+	for (size_t i = 3; i < jacobsthal.size(); ++i)
 	{
-		int gap = jacobsthal[i] - jacobsthal[i - 1];
-		if (gap > 0 && gap <= (int)smaller.size())
-			gaps.push_back(gap);
+		size_t current = static_cast<size_t>(jacobsthal[i]);
+		if (current > n)
+			current = n;
+		if (current <= previous)
+			continue;
+		for (size_t idx = current; idx > previous; --idx)
+			order.push_back(idx - 1);
+		previous = current;
+		if (previous == n)
+			break;
 	}
 
-	std::vector<bool> inserted(smaller.size(), false);
+	for (size_t idx = n; idx > previous; --idx)
+		order.push_back(idx - 1);
 
-	for (size_t g = 0; g < gaps.size(); ++g)
+	for (size_t k = 0; k < order.size(); ++k)
 	{
-		int gap = gaps[g];
-		for (int j = gap; j > 0 && j <= (int)smaller.size(); --j)
-		{
-			if (!inserted[j - 1])
-			{
-				typename Container::iterator it = std::lower_bound(sorted.begin(), sorted.begin() + std::min((int)sorted.size(), j + 1), smaller[j - 1]);
-				sorted.insert(it, smaller[j - 1]);
-				inserted[j - 1] = true;
-			}
-		}
-	}
-	
-	for (size_t i = 0; i < smaller.size(); ++i)
-	{
-		if (!inserted[i])
-		{
-			typename Container::iterator it = std::lower_bound(sorted.begin(), sorted.end(), smaller[i]);
-			sorted.insert(it, smaller[i]);
-		}
+		size_t i = order[k];
+		int value = smaller[i];
+		int partner = partners[i];
+		typename Container::iterator partnerIt = std::find(sorted.begin(), sorted.end(), partner);
+		typename Container::iterator searchEnd = (partnerIt != sorted.end()) ? partnerIt : sorted.end();
+		typename Container::iterator it = std::lower_bound(sorted.begin(), searchEnd, value);
+		sorted.insert(it, value);
 	}
 
 	if (oddElement != -1)
-		sorted.push_back(oddElement);
+	{
+		typename Container::iterator it = std::lower_bound(sorted.begin(), sorted.end(), oddElement);
+		sorted.insert(it, oddElement);
+	}
 }
 
 /* ===== PMERGE ME PUBLIC FUNCTIONS ===== */
@@ -231,8 +237,9 @@ void PmergeMe<Container>::sort(Container &data)
 	int	oddElement = -1;
 	
 	_pairingPhase(data, larger, smaller, oddElement);
+	Container partners = larger;
 	_recursiveSort(larger);
-	_insertionPhase(larger, smaller, oddElement);
+	_insertionPhase(larger, smaller, partners, oddElement);
 
 	data.clear();
 	for (size_t i = 0; i < larger.size(); ++i)

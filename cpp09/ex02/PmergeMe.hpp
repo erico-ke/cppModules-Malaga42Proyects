@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 14:56:36 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/04/20 18:54:10 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/04/20 19:41:28 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ private:
 
 	void				_pairingPhase(Container &input, Container &larger, Container &smailler, int &oddElement);
 	void				_recursiveSort(Container &larger);
-	void				_insertionPhase(Container &sorted, const Container &smaller, int oddElement);
+	void				_insertionPhase(Container &sorted, const Container &smaller, const Container &partners, int oddElement);
 
 	
 public:
