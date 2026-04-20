@@ -17,6 +17,7 @@
 # include <vector>
 # include <algorithm>
 # include <iostream>
+# include <cctype>
 
 /* ===== DEBUG MODE ===== */
 # ifndef DEBUG
@@ -102,5 +103,6 @@ public:
 	
 	void	sort(Container &data);
 };
+void	parseInput(char **input);
 
 #endif

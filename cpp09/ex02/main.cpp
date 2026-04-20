@@ -25,6 +25,8 @@ int main(int argc, char **argv)
             return 1;
         }
         
+       parseInput(argv);
+
         // Leer datos
         std::deque<int> dataDeque;
         std::vector<int> dataVector;
@@ -32,12 +34,6 @@ int main(int argc, char **argv)
         for (int i = 1; i < argc; ++i)
         {
             long value = std::strtol(argv[i], NULL, 10);
-            
-            if (value < 0)
-            {
-                std::cerr << "Error: Negative numbers not allowed" << std::endl;
-                return 1;
-            }
             
             dataDeque.push_back(static_cast<int>(value));
             dataVector.push_back(static_cast<int>(value));

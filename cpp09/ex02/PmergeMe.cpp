@@ -249,3 +249,23 @@ void PmergeMe<Container>::sort(Container &data)
 template class PmergeMe<std::deque<int> >;
 template class PmergeMe<std::vector<int> >;
 
+/* ===== PARSER ===== */
+
+void	parseInput(char **input)
+{
+	int	i = 0;
+
+	while (input[++i])
+	{
+		int j = -1;
+		while (input[i][++j])
+			if (!std::isdigit(input[i][j]))
+				throw InputException(input[i]);
+		long value = std::strtol(input[i], NULL, 10);
+		if (value < 0)
+			throw NegativeNumberException();
+	}
+
+	
+}
+
