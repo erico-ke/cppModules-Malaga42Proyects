@@ -265,7 +265,5 @@ void	parseInput(char **input)
 		if (value < 0)
 			throw NegativeNumberException();
 	}
-
-	
 }
 
