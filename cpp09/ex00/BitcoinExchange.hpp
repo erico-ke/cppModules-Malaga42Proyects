@@ -6,46 +6,46 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 14:55:41 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/04/17 11:50:52 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/04/20 10:34:05 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGE_HPP
-#define BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
 
-#include <map>
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <cstdlib>
-#include <cctype>
-#include <exception>
-#include <climits>
+# include <map>
+# include <string>
+# include <iostream>
+# include <fstream>
+# include <sstream>
+# include <cstdlib>
+# include <cctype>
+# include <exception>
+# include <climits>
 
 /* ===== DEBUG MODE ===== */
-#ifndef DEBUG
-# define DEBUG 0
-#endif
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
 
-#if DEBUG == 1
-# define DEBUG_LOG(msg) do { std::cout << msg << std::endl; } while (0)
-#else
-# define DEBUG_LOG(msg) do {} while (0)
-#endif
+# if DEBUG == 1
+#  define DEBUG_LOG(msg) do { std::cout << msg << std::endl; } while (0)
+# else
+#  define DEBUG_LOG(msg) do {} while (0)
+# endif
 
 /* ===== ANSI COLOR CODES ===== */
-#define RESET "\033[0m"
-#define CONSTRUCTOR_COLOR "\033[36m"
-#define DESTRUCTOR_COLOR "\033[35m"
-#define ERROR_COLOR "\033[91m"
+# define RESET "\033[0m"
+# define CONSTRUCTOR_COLOR "\033[36m"
+# define DESTRUCTOR_COLOR "\033[35m"
+# define ERROR_COLOR "\033[91m"
 
-#if DEBUG == 1
-# define DEBUG_ERROR(msg) do { \
-	std::cerr << ERROR_COLOR << msg << RESET << std::endl; } while (0)
-#else
-# define DEBUG_ERROR(msg) do {} while (0)
-#endif
+# if DEBUG == 1
+#  define DEBUG_ERROR(msg) do { \
+		std::cerr << ERROR_COLOR << msg << RESET << std::endl; } while (0)
+# else
+#  define DEBUG_ERROR(msg) do {} while (0)
+# endif
 
 /* ===== BASE EXCEPTION ===== */
 class BitcoinExchangeException : public std::exception

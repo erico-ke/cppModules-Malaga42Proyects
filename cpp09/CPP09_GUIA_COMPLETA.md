@@ -959,28 +959,28 @@ private:
 ### Paso 2: Validación de Expresión
 
 ```cpp
-void RPN::validateExpression(const std::string& expression)
+void RPN::validateExpression(const std::string &expression)
 {
     if (expression.empty())
-        throw SyntaxException("Empty expression");
+        throw SyntaxException("Empty expression.");
     
-    std::stringstream ss(expression);
-    std::string token;
-    int numberCount = 0;
-    
+    std::stringstream	ss(expression);
+    std::string			token;
+
     while (ss >> token)
     {
         if (_isNumber(token))
         {
-            numberCount++;
-            if (numberCount > 10)
-                throw TooManyNumbersException();
+            int num = std::atoi(token.c_str());
+            if (num < 0 || num > 9)
+                throw InvalidRangeOfNumberException("Error: numbers must be between 0 and 9.");
         }
         else if (!_isOperator(token))
         {
-            throw TokenException("Invalid token");
+            throw TokenException(token);
         }
     }
+}
     
     DEBUG_LOG("Expression validated. " << numberCount << " numbers found");
 }

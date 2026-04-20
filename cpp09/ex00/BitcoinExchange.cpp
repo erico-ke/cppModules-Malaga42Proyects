@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 14:55:39 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/04/17 11:56:37 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/04/20 12:49:26 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ const char* BitcoinExchangeException::what(void) const throw()
 }
 
 FileException::FileException(const std::string& filename)
-	: BitcoinExchangeException("Error: could not open file.")
+	: BitcoinExchangeException("")
 {
-	(void)filename;
+	_message = "Error: could not open file " + filename;
 	DEBUG_LOG(CONSTRUCTOR_COLOR << "FileException created" << RESET);
 }
 
