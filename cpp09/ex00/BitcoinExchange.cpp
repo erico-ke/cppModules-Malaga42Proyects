@@ -94,8 +94,6 @@ InvalidFormatException::~InvalidFormatException(void) throw()
 	DEBUG_LOG(DESTRUCTOR_COLOR << "InvalidFormatException destroyed" << RESET);
 }
 
-/* ===== BITCOINEXCHANGE IMPLEMENTATIONS ===== */
-
 BitcoinExchange::BitcoinExchange(void)
 {
 	DEBUG_LOG(CONSTRUCTOR_COLOR << "BitcoinExchange created" << RESET);
