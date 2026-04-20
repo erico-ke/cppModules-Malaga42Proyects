@@ -354,15 +354,15 @@ ex00/
 class BitcoinExchangeException : public std::exception
 {
 	protected:
-		std::string	_message;
+		std::string_message;
 
 	public:
 		BitcoinExchangeException(const std::string& message);
 		BitcoinExchangeException(const BitcoinExchangeException& other);
-		BitcoinExchangeException&	operator=(const BitcoinExchangeException& other);
+		BitcoinExchangeException&operator=(const BitcoinExchangeException& other);
 		virtual ~BitcoinExchangeException(void) throw();
 
-		virtual const char*	what(void) const throw();
+		virtual const char*what(void) const throw();
 };
 
 /* ===== DERIVED EXCEPTIONS ===== */
@@ -468,28 +468,28 @@ class InvalidFormatException : public BitcoinExchangeException
 class BitcoinExchange
 {
 	private:
-		std::map<std::string, float>	_database;
+		std::map<std::string, float>_database;
 
 		// Validation helpers
-		bool	_isValidDate(const std::string& date) const;
-		bool	_isValidValue(const std::string& value) const;
-		float	_parseFloat(const std::string& str) const;
-		bool	_isNumber(const std::string& str) const;
-		int		_parseInt(const std::string& str) const;
+		col_isValidDate(const std::string& date) const;
+		col_isValidValue(const std::string& value) const;
+		float _parseFloat(const std::string& str) const;
+		col_isNumber(const std::string& str) const;
+		inte_parseInt(const std::string& str) const;
 
 	public:
 		// Orthodox Canonical Form
 		BitcoinExchange(void);
 		BitcoinExchange(const BitcoinExchange& other);
-		BitcoinExchange&	operator=(const BitcoinExchange& other);
+		BitcoinExchange&operator=(const BitcoinExchange& other);
 		~BitcoinExchange(void);
 
 		// Main API
-		void	loadDatabase(const std::string& filename);
-		void	processInput(const std::string& inputFile);
+		foldloadDatabase(const std::string& filename);
+		foldprocessInput(const std::string& inputFile);
 
 	private:
-		float	_getExchangeRate(const std::string& date) const;
+		float _getExchangeRate(const std::string& date) const;
 };
 
 #endif
@@ -964,8 +964,8 @@ void RPN::validateExpression(const std::string &expression)
     if (expression.empty())
         throw SyntaxException("Empty expression.");
     
-    std::stringstream	ss(expression);
-    std::string			token;
+    std::stringstreamss(expression);
+    std::stringtoken;
 
     while (ss >> token)
     {
@@ -1874,7 +1874,7 @@ MÓDULO CPP09 - REGLA DE ORO
 ║                                                            ║
 ║ Después de EX00: map PROHIBIDO en EX01 y EX02              ║
 ║ Después de EX01: stack PROHIBIDO en EX02                   ║
-║ Después de EX02: vector/deque (fin módulo)   			     ║
+║ Después de EX02: vector/deque (fin módulo)    ex00     ║
 ╚════════════════════════════════════════════════════════════╝
 ```
 
@@ -1883,4 +1883,3 @@ MÓDULO CPP09 - REGLA DE ORO
 **Fin de la Guía CPP09 Completa**
 
 Última actualización: Abril 10, 2026
-
