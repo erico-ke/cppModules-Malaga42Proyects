@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 16:25:09 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/04/20 19:41:28 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/04/21 15:36:00 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,9 +257,11 @@ void	parseInput(char **input)
 
 	while (input[++i])
 	{
+		if (!input[i][0])
+			throw InputException("Empty input");
 		int j = -1;
 		while (input[i][++j])
-			if (!std::isdigit(input[i][j]))
+			if (!std::isdigit(input[i][j]) && input[i][j] != '-' && input[i][j] != '+')
 				throw InputException(input[i]);
 		long value = std::strtol(input[i], NULL, 10);
 		if (value < 0)
