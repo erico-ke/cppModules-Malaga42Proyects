@@ -6,7 +6,7 @@
 /*   By: erico-ke <erico-ke@42malaga.student.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 14:55:39 by erico-ke          #+#    #+#             */
-/*   Updated: 2026/04/20 12:49:26 by erico-ke         ###   ########.fr       */
+/*   Updated: 2026/04/21 15:22:03 by erico-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,7 @@ bool BitcoinExchange::_isValidDate(const std::string& date) const
 	int year = _parseInt(date.substr(0, 4));
 	int month = _parseInt(date.substr(5, 2));
 	int day = _parseInt(date.substr(8, 2));
-	
+
 	if (month < 1 || month > 12)
 		return false;
 	
@@ -222,7 +222,7 @@ bool BitcoinExchange::_isValidValue(const std::string& value) const
 {
 	if (!_isNumber(value))
 		return false;
-	
+		
 	float fval = _parseFloat(value);
 	
 	if (fval < 0 || fval > 1000)
@@ -239,7 +239,7 @@ float BitcoinExchange::_getExchangeRate(const std::string& date) const
 		return it->second;
 	
 	if (it == _database.begin())
-		return -1.0f;
+		return 0.0f;
 	
 	--it;
 	return it->second;
@@ -298,13 +298,12 @@ void BitcoinExchange::processInput(const std::string& inputFile)
 	{
 		if (line.empty())
 			continue;
-		
 		try
 		{
 			size_t pipe_pos = line.find(" | ");
 			if (pipe_pos == std::string::npos)
 				throw InvalidFormatException(line);
-			
+				
 			std::string date_str = line.substr(0, pipe_pos);
 			std::string value_str = line.substr(pipe_pos + 3);
 			
@@ -322,7 +321,7 @@ void BitcoinExchange::processInput(const std::string& inputFile)
 			
 			float rate = _getExchangeRate(date_str);
 			if (rate < 0)
-				continue;
+				continue ;
 			
 			float value = _parseFloat(value_str);
 			float result = value * rate;
