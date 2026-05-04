@@ -37,7 +37,7 @@ Ejemplos de uso
   ```bash
   cd cpp09/ex00
   make
-  ./btc data.csv input.csv
+  ./btc input.csv
   ```
 - `ex01` (RPN):
   ```bash
